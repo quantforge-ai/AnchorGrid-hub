@@ -1,0 +1,93 @@
+[build-system]
+requires = ["setuptools>=68.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "quantgrid"
+version = "1.0.0"
+description = "Collective Intelligence for Financial Markets - The world's first federated learning network for finance"
+authors = [{name = "QuantGrid Team"}]
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+keywords = ["finance", "quantitative", "trading", "ai", "ml", "scrapers", "indicators", "federated-learning", "collective-intelligence"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Financial and Insurance Industry",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Office/Business :: Financial :: Investment",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "fastapi>=0.104.0",
+    "uvicorn[standard]>=0.24.0",
+    "pydantic>=2.5.0",
+    "pydantic-settings>=2.1.0",
+    "sqlalchemy>=2.0.23",
+    "asyncpg>=0.29.0",
+    "psycopg2-binary>=2.9.9",
+    "alembic>=1.13.0",
+    "redis>=5.0.1",
+    "httpx>=0.25.2",
+    "yfinance>=0.2.33",
+    "pandas>=2.1.4",
+    "numpy>=1.26.2",
+    "loguru>=0.7.2",
+    "python-jose[cryptography]>=3.3.0",
+    "passlib[bcrypt]>=1.7.4",
+    "python-multipart>=0.0.6",
+    "feedparser>=6.0.10",
+    "beautifulsoup4>=4.12.2",
+    "lxml>=4.9.3",
+    "aiohttp>=3.9.1",
+    "weaviate-client>=3.25.3",
+    "sentence-transformers>=2.2.2",
+    "langchain>=0.1.0",
+    "langchain-community>=0.0.10",
+    "torch>=2.1.0",
+    "transformers>=4.36.0",
+    "peft>=0.7.0",
+    "bitsandbytes>=0.41.3",
+    "accelerate>=0.25.0",
+    "datasets>=2.16.0",
+    "scikit-learn>=1.3.2",
+    "scipy>=1.11.4",
+    "typer>=0.9.0",
+    "rich>=13.7.0",
+    "requests>=2.31.0",
+]
+
+[project.optional-dependencies]
+ml = [
+    "torch>=2.1.0",
+    "transformers>=4.35.0",
+    "peft>=0.7.0",          # LoRA adapters
+    "trl>=0.7.4",           # SFT training
+    "bitsandbytes>=0.41.0", # Quantization
+    "datasets>=2.15.0",     # HuggingFace datasets
+    "accelerate>=0.25.0",   # Multi-GPU training
+]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+    "pytest-cov>=4.1.0",
+    "black>=23.12.0",
+    "isort>=5.12.0",
+    "mypy>=1.5.0",
+    "ruff>=0.1.8",
+]
+all = [
+    "quantgrid[ml,dev]",
+]
+
+[project.scripts]
+quantgrid = "quantgrid.cli:app"
+
+[project.urls]
+Homepage = "https://github.com/QuantGrid/quantgrid-core"
+Repository = "https://github.com/QuantGrid/quantgrid-core"
+Documentation = "https://quantgrid.dev/docs"
+Issues = "https://github.com/QuantGrid/quantgrid-core/issues"

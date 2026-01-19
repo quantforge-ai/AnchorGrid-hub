@@ -1,0 +1,29 @@
+# ------------------------------------------------------------------
+# ⚡ GRID PROTOCOL v1.0.0
+# Warning: This file controls the reality of your repository.
+# ------------------------------------------------------------------
+
+project:
+  name: "QuantGrid Core"
+  type: "python"
+  min_grid_version: "0.1.0"
+
+# 🛡️ THE FIREWALL
+firewall:
+  block:
+    - ".env"
+    - "secrets.json"
+    - "wandb/"
+    - "*.pem"
+
+# 🏃 THE ROUTINES
+commands:
+  # The Setup: 'grid dev' uses this to establish reality
+  setup: "pip install -e . && pip install -r requirements.txt"
+  
+  # The Work - Mapped to python -m for clean imports
+  train: "python -m quantgrid.ml.trainer"
+  push: "python -m quantgrid.hub.submit"
+  status: "python -m quantgrid.cli status"
+  test: "pytest tests/"
+  clean: "rm -rf build/ dist/ *.egg-info"
