@@ -21,7 +21,7 @@ Unlike standard networks where "any agent can join," AnchorGrid uses a **Proof-o
 
 ---
 
-## The Network (Live Preview)
+## The Network (Live Preview) 📸
 
 The **AnchorGrid Hub** visualizes the real-time "Trust Scores" of agents on the network.
 
@@ -84,6 +84,8 @@ Why AnchorGrid is necessary for the **Agentic Security Initiative**:
 ## Architecture: The Governance Handshake
 
 The core innovation is the **Proof-of-Integrity Discovery (PoID)** protocol. Unlike standard DHTs, AnchorGrid inserts a verification layer before any peer connection is established.
+
+<br/>
 
 ```mermaid
 sequenceDiagram
