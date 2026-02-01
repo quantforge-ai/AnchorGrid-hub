@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/branding/logo.png" alt="AnchorGrid Hub" width="400"/>
+  <img src="assets/branding/logo.png" alt="AnchorGrid Hub" width="600"/>
 </p>
 
 # AnchorGrid - Secure Agentic Intelligence Network
@@ -15,13 +15,13 @@
 
 ---
 
-## 🎯 What is AnchorGrid?
+## What is AnchorGrid?
 
 AnchorGrid is a **security-first** decentralized agent network that combines:
-- 🔐 **Governed Discovery** - Agents must pass [Anchor](https://pypi.org/project/anchor-audit/) compliance checks before joining
-- 🧠 **Universal Engine** - Domain-agnostic AI reasoning (Finance, Medical, Legal)
-- 🌐 **P2P Distribution** - Decentralized model sharing with cryptographic verification
-- 🛡️ **Policy Enforcement** - Automated FINOS/OWASP compliance at protocol level
+- **Governed Discovery** - Agents must pass [Anchor](https://pypi.org/project/anchor-audit/) compliance checks before joining
+- **Universal Engine** - Domain-agnostic AI reasoning (Finance, Medical, Legal)
+- **P2P Distribution** - Decentralized model sharing with cryptographic verification
+- **Policy Enforcement** - Automated FINOS/OWASP compliance at protocol level
 
 ### The Problem We Solve
 
@@ -29,15 +29,15 @@ AnchorGrid is a **security-first** decentralized agent network that combines:
 **AnchorGrid:** Only verified agents can join → **Proof-of-Integrity Discovery (PoID)**
 
 ```
-Traditional Network:  Agent → "Hello" → ✅ Joined
-AnchorGrid:          Agent → "Hello" → "Show Anchor proof" → Verify → ✅ Joined
-                                                                ↓
-                                                         No proof? ❌ Rejected
+Traditional Network:  Agent → "Hello" → Joined
+AnchorGrid:          Agent → "Hello" → "Show Anchor proof" → Verify → Joined
+                                                                 ↓
+                                                          No proof? Rejected
 ```
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Installation
 
@@ -46,8 +46,8 @@ AnchorGrid:          Agent → "Hello" → "Show Anchor proof" → Verify → �
 pip install anchor-audit  # Our governance engine
 
 # Clone AnchorGrid
-git clone https://github.com/YourUsername/anchorgrid-core.git
-cd anchorgrid-core
+git clone https://github.com/quantforge-ai/AnchorGrid-hub.git
+cd AnchorGrid-hub
 pip install -e .
 ```
 
@@ -70,8 +70,8 @@ python demo_discovery.py
 
 **Output:**
 ```
-✅ AnchorGrid: 4 agents tried to join → 2 accepted (only verified ones)
-❌ AgentGrid:  4 agents tried to join → 4 accepted (including malicious ones)
+AnchorGrid: 4 agents tried to join → 2 accepted (only verified ones)
+AgentGrid:  4 agents tried to join → 4 accepted (including malicious ones)
 ```
 
 ### Run a Finance Agent
@@ -81,17 +81,17 @@ python demo_discovery.py
 python -m anchorgrid.cli run --plugin finance AAPL
 
 # Output:
-📡 Fetching live data for AAPL...
-✅ AAPL: $259.48
-📊 Calculating RSI: 42.3 (NEUTRAL)
-💭 Thinking... (Streaming from Local Phi)
+Fetching live data for AAPL...
+AAPL: $259.48
+Calculating RSI: 42.3 (NEUTRAL)
+Thinking... (Streaming from Local Phi)
 
 Recommendation: HOLD
 ```
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ### Visual Overview
 
@@ -151,7 +151,7 @@ response = engine.think(
 
 ---
 
-## 📦 Project Structure
+## Project Structure
 
 ```
 anchorgrid/
@@ -178,14 +178,14 @@ anchorgrid/
 
 ---
 
-## ✨ Key Features
+## Key Features
 
 ### 1. **Governed Discovery** (Our Competitive Moat)
 
 **What other networks do:**
 ```python
 # AgentGrid - Anyone can join
-network.register_agent("HackerBot")  # ✅ Allowed!
+network.register_agent("HackerBot")  # Allowed!
 ```
 
 **What AnchorGrid does:**
@@ -196,23 +196,23 @@ network.register_agent(
     anchor_cert="0x7a3f9e...",
     policy="finos-financial"
 )
-# ❌ Rejected if no valid Anchor proof!
+# Rejected if no valid Anchor proof!
 ```
 
 ### 2. **Multi-Domain Intelligence**
 
 | Domain | Capability | Status |
 |--------|-----------|--------|
-| **Finance** | Stock analysis, market data | ✅ Live |
-| **Medical** | Tumor detection, DICOM analysis | 🔄 Phase 5 |
-| **Legal** | Contract analysis, NDA review | 🔄 Phase 5 |
-| **Code** | Vulnerability detection | 🔄 Phase 5 |
+| **Finance** | Stock analysis, market data | Live |
+| **Medical** | Tumor detection, DICOM analysis | Phase 5 |
+| **Legal** | Contract analysis, NDA review | Phase 5 |
+| **Code** | Vulnerability detection | Phase 5 |
 
 ### 3. **Privacy-First**
 
-- ✅ **100% local execution** (Ollama-based, no API calls)
-- ✅ **P2P distribution** (no central server)
-- ✅ **On-device reasoning** (HIPAA/GDPR compliant)
+- **100% local execution** (Ollama-based, no API calls)
+- **P2P distribution** (no central server)
+- **On-device reasoning** (HIPAA/GDPR compliant)
 
 ### 4. **Policy Enforcement**
 
@@ -223,32 +223,32 @@ Automated compliance with:
 
 ---
 
-## 🔬 Live Demo
+## Live Demo
 
 ### Scenario: Malicious Agent Rejection
 
 ```bash
 $ python demo_discovery.py
 
-🎯 AnchorGrid: Proof-of-Integrity Discovery Demo
+AnchorGrid: Proof-of-Integrity Discovery Demo
 
 Scenario 1: Legitimate agent with Anchor certificate
-✅ Success! Registered: FinanceBot (score: 98%)
+Success! Registered: FinanceBot (score: 98%)
 
 Scenario 2: Suspicious agent with low trust score
-❌ Rejected! Trust score too low: 75% (minimum: 95%)
+Rejected! Trust score too low: 75% (minimum: 95%)
 
 Scenario 3: Agent with expired certificate
-❌ Rejected! Certificate expired
+Rejected! Certificate expired
 
 KEY INSIGHT:
-❌ AgentGrid: 4 agents tried → 4 accepted (including malicious)
-✅ AnchorGrid: 4 agents tried → 2 accepted (only verified)
+AgentGrid: 4 agents tried → 4 accepted (including malicious)
+AnchorGrid: 4 agents tried → 2 accepted (only verified)
 ```
 
 ---
 
-## 🛠️ CLI Commands
+## CLI Commands
 
 ### Discovery Commands
 
@@ -288,14 +288,14 @@ anchorgrid run --plugin finance AAPL
 
 ---
 
-## 📊 Comparison: AnchorGrid vs Others
+## Comparison: AnchorGrid vs Others
 
 | Feature | AgentGrid | HuggingFace | **AnchorGrid** |
 |---------|-----------|-------------|----------------|
-| **Agent Discovery** | ✅ Capability-based | ❌ None | ✅ **Governed** |
+| **Agent Discovery** | Capability-based | None | **Governed** |
 | **Security** | Basic auth | API keys | **Anchor verification** |
 | **Privacy** | Central server | API calls | **100% local** |
-| **Governance** | ❌ None | ❌ None | **FINOS/OWASP** |
+| **Governance** | None | None | **FINOS/OWASP** |
 | **Use Case** | Generic agents | Model hub | **Regulated industries** |
 | **Compliance** | Manual | Manual | **Automated** |
 
@@ -303,7 +303,7 @@ anchorgrid run --plugin finance AAPL
 
 ---
 
-## 🎓 For GSoC Reviewers
+## For GSoC Reviewers
 
 ### Why This Matters
 
@@ -312,27 +312,27 @@ anchorgrid run --plugin finance AAPL
 **Our Solution:** AnchorGrid demonstrates automated policy enforcement at the protocol level.
 
 **Proof of Concept:**
-- ✅ Published tool: [Anchor](https://pypi.org/project/anchor-audit/) (AI governance engine)
-- ✅ Working network: Finance agents with live data
-- ✅ Novel contribution: Proof-of-Integrity Discovery (first in industry)
+- Published tool: [Anchor](https://pypi.org/project/anchor-audit/) (AI governance engine)
+- Working network: Finance agents with live data
+- Novel contribution: Proof-of-Integrity Discovery (first in industry)
 
 ### Deliverables (Phase 1-4)
 
-- ✅ **Phase 1:** Universal plugin architecture
-- ✅ **Phase 2:** Multi-domain registry (Finance, Medical, Legal)
-- ✅ **Phase 3:** Universal AI reasoning engine
-- ✅ **Phase 4:** Proof-of-Integrity Discovery (PoID)
+- **Phase 1:** Universal plugin architecture
+- **Phase 2:** Multi-domain registry (Finance, Medical, Legal)
+- **Phase 3:** Universal AI reasoning engine
+- **Phase 4:** Proof-of-Integrity Discovery (PoID)
 
 ### Next Steps (Phase 5)
 
-- 🔄 Medical plugin (tumor detection)
-- 🔄 Legal plugin (contract analysis)
-- 🔄 Real P2P distribution (IPFS)
-- 🔄 Web dashboard (trust scores)
+- Medical plugin (tumor detection)
+- Legal plugin (contract analysis)
+- Real P2P distribution (IPFS)
+- Web dashboard (trust scores)
 
 ---
 
-## 🔗 Links
+## Links
 
 - **Anchor (Governance Engine):** https://pypi.org/project/anchor-audit/
 - **Documentation:** [Coming Soon]
@@ -341,7 +341,7 @@ anchorgrid run --plugin finance AAPL
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions! Areas of interest:
 
@@ -352,16 +352,16 @@ We welcome contributions! Areas of interest:
 
 ---
 
-## 📄 License
+## License
 
 MIT License - see [LICENSE](LICENSE) for details.
 
 ---
 
-## 🚀 Mission
+## Mission
 
 > "Build the secure infrastructure for agentic AI in regulated industries."
 
 **AnchorGrid isn't just another agent network. It's the first network where compliance is verified before agents can even join.**
 
-**One brain. Many domains. Zero compromises.** 🧠🔐🌐
+**One brain. Many domains. Zero compromises.**
