@@ -11,7 +11,7 @@
 
 ---
 
-## ⚡ What is AnchorGrid?
+## What is AnchorGrid?
 
 AnchorGrid is the **first decentralized agent network** that enforces security at the protocol level.
 
@@ -21,7 +21,7 @@ Unlike standard networks where "any agent can join," AnchorGrid uses a **Proof-o
 
 ---
 
-## 📸 The Network (Live Preview)
+## The Network (Live Preview)
 
 The **AnchorGrid Hub** visualizes the real-time "Trust Scores" of agents on the network.
 
@@ -32,7 +32,7 @@ The **AnchorGrid Hub** visualizes the real-time "Trust Scores" of agents on the 
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Installation
 
@@ -57,21 +57,21 @@ Try to register a "Malicious" agent and watch the protocol reject it.
 python -m anchorgrid.node start --port 8000
 
 # Step 2: Try to register an unverified agent
-# Result: ❌ REJECTED (Error: Missing Proof-of-Integrity Certificate)
+# Result: REJECTED (Error: Missing Proof-of-Integrity Certificate)
 python demo_discovery.py --agent "EvilBot" --no-cert
 
 # Step 3: Register a verified agent
-# Result: ✅ ACCEPTED (Trust Score: 98/100)
+# Result: ACCEPTED (Trust Score: 98/100)
 python demo_discovery.py --agent "FinanceBot" --cert-path ./certs/valid.pem
 ```
 
 ---
 
-## ⚔️ Competitive Differentiation
+## Competitive Differentiation
 
 Why AnchorGrid is necessary for the **Agentic Security Initiative**:
 
-| Feature | 🕸️ Standard Agent Networks | ⚓ AnchorGrid (This Project) |
+| Feature | Standard Agent Networks | AnchorGrid (This Project) |
 |---------|---------------------------|----------------------------|
 | **Entry Barrier** | None (Anyone can join) | **Strict (Proof-of-Integrity Required)** |
 | **Security Model** | "User Beware" | **"Verify Then Trust"** |
@@ -81,16 +81,16 @@ Why AnchorGrid is necessary for the **Agentic Security Initiative**:
 
 ---
 
-## 🏗️ Architecture: The "Governance Handshake"
+## Architecture: The "Governance Handshake"
 
 The core innovation is the **PoID (Proof-of-Integrity Discovery)** protocol. Unlike standard DHTs, AnchorGrid inserts a verification layer before any peer connection is established.
 
 ```mermaid
 sequenceDiagram
-    participant User as 👤 User/Agent
-    participant Engine as 🛡️ Anchor Engine (Local)
-    participant Network as 🌐 AnchorGrid Network
-    participant Bouncer as 👮 Governance Node
+    participant User as User/Agent
+    participant Engine as Anchor Engine (Local)
+    participant Network as AnchorGrid Network
+    participant Bouncer as Governance Node
 
     User->>Engine: 1. Request Audit (Scan Code)
     Engine-->>User: 2. Issue Signed Certificate (Proof-of-Integrity)
@@ -99,17 +99,17 @@ sequenceDiagram
     Network->>Bouncer: 4. Verify Certificate & Timestamp
     
     alt Certificate Valid
-        Bouncer-->>Network: ✅ Trust Score: 98/100
-        Network-->>User: 🔓 Access Granted (Mainnet)
+        Bouncer-->>Network: Trust Score: 98/100
+        Network-->>User: Access Granted (Mainnet)
     else Certificate Invalid/Expired
-        Bouncer-->>Network: ❌ Policy Failure (OWASP LLM02)
-        Network-->>User: 🔒 Connection Dropped
+        Bouncer-->>Network: Policy Failure (OWASP LLM02)
+        Network-->>User: Connection Dropped
     end
 ```
 
 ---
 
-## 🧩 Roadmap (GSoC 2026)
+## Roadmap (GSoC 2026)
 
 This repository serves as the **Reference Implementation** for my GSoC proposal.
 
@@ -121,7 +121,7 @@ This repository serves as the **Reference Implementation** for my GSoC proposal.
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 We are actively looking for contributors to help build:
 
@@ -130,14 +130,14 @@ We are actively looking for contributors to help build:
 
 ---
 
-## 📄 License
+## License
 
 **License:** Apache 2.0  
 **Maintained by:** Tanishq Dasari
 
 ---
 
-## 🔗 Links
+## Links
 
 - **Published Tool:** [anchor-audit on PyPI](https://pypi.org/project/anchor-audit/)
 - **GitHub:** [AnchorGrid-hub](https://github.com/quantforge-ai/AnchorGrid-hub)
