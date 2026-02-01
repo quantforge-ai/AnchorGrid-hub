@@ -113,11 +113,11 @@ sequenceDiagram
 
 This repository serves as the **Reference Implementation** for my GSoC proposal.
 
-- [x] **Phase 1:** The Engine (`anchor-audit` on PyPI) ✅
-- [x] **Phase 2:** The Core (Basic P2P Discovery) ✅
-- [ ] **Phase 3:** The Hub (Next.js Dashboard - In Progress) 🚧
-- [ ] **Phase 4:** Medical Plugins (HIPAA-compliant Agent Templates) 🔜
-- [ ] **Phase 5:** Mainnet (Public DHT Launch) 🔜
+- [x] **Phase 1:** The Engine (`anchor-audit` on PyPI) (Completed)
+- [x] **Phase 2:** The Core (Basic P2P Discovery) (Completed)
+- [ ] **Phase 3:** The Hub (Next.js Dashboard - In Progress)
+- [ ] **Phase 4:** Medical Plugins (HIPAA-compliant Agent Templates) (Upcoming)
+- [ ] **Phase 5:** Mainnet (Public DHT Launch) (Upcoming)
 
 ---
 
