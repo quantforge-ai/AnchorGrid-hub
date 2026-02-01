@@ -1,6 +1,6 @@
-# QuantGrid Agents Guide
+# AnchorGrid Agents Guide
 
-The `quantgrid.agents` package implements the multi-agent AI system. It uses specialized agents that coordinate to perform complex financial research and market analysis.
+The `anchorgrid.agents` package implements the multi-agent AI system. It uses specialized agents that coordinate to perform complex financial research and market analysis.
 
 ## Agent Architecture
 
@@ -39,7 +39,7 @@ The `llm_router.py` utility handles model execution with automatic failover:
 ## Usage Example
 
 ```python
-from quantgrid.agents import Orchestrator
+from anchorgrid.agents import Orchestrator
 
 # Initialize the system
 orchestrator = Orchestrator()

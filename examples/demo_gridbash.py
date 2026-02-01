@@ -2,7 +2,7 @@
 Standalone Grid Bash Demo
 
 Run this to see the boot sequence and shell WITHOUT needing
-full QuantGrid package dependencies.
+full AnchorGrid package dependencies.
 """
 
 import os
@@ -78,7 +78,7 @@ def boot_sequence():
 
 # --- SHELL ---
 
-HISTORY_FILE = os.path.expanduser('~/.quantgrid_history_demo')
+HISTORY_FILE = os.path.expanduser('~/.anchorgrid_history_demo')
 GRID_COMMANDS = [
     'login', 'logout', 'status', 'ls', 'train', 'push', 'pull', 
     'trade', 'init', 'exit', 'clear', 'cls', 'whoami', 'help'

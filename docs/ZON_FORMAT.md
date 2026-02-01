@@ -1,6 +1,6 @@
 # ZON Format Guide - Zero Overhead Notation
 
-> **Attribution**: ZON (Zero Overhead Notation) is developed by the creators at [zonformat.org](https://zonformat.org). QuantGrid uses ZON for token-efficient financial data serialization.
+> **Attribution**: ZON (Zero Overhead Notation) is developed by the creators at [zonformat.org](https://zonformat.org). AnchorGrid uses ZON for token-efficient financial data serialization.
 
 **The most token-efficient format for financial data.**
 
@@ -10,7 +10,7 @@
 
 ZON (Zero Overhead Notation) is a token-efficient serialization format designed for LLM workflows. It reduces token usage by **35-50%** compared to JSON while maintaining full readability and JSON compatibility.
 
-### Why We Use ZON in QuantGrid
+### Why We Use ZON in AnchorGrid
 
 **JSON Example** (124 tokens):
 ```json
@@ -70,7 +70,7 @@ q:Risk assessment|i:Portfolio: 60% stocks, 40% bonds, $1M|o:Moderate risk, well-
 ## Using ZON in Training
 
 ```python
-from quantgrid.core.zon_engine import ZONEngine
+from anchorgrid.core.zon_engine import ZONEngine
 
 # Initialize
 zon = ZONEngine()
@@ -117,7 +117,7 @@ q:Earnings impact?|i:Beat EPS $1.52 vs $1.39|o:Stock ↑12% → new high. Buy si
 ### JSON to ZON
 
 ```python
-from quantgrid.core.zon_engine import ZONEngine
+from anchorgrid.core.zon_engine import ZONEngine
 
 zon = ZONEngine()
 
@@ -190,7 +190,7 @@ earnings_calls.zon
 
 ---
 
-## Why ZON Matters for QuantGrid
+## Why ZON Matters for AnchorGrid
 
 When you submit adapters to the Hub, ZON format:
 - **Reduces dataset size** by 35-50% (easier to share metadata)
@@ -202,4 +202,4 @@ When you submit adapters to the Hub, ZON format:
 
 ---
 
-**Note**: QuantGrid uses ZON as a community standard. All credit for ZON format specification goes to the creators at zonformat.org.
+**Note**: AnchorGrid uses ZON as a community standard. All credit for ZON format specification goes to the creators at zonformat.org.

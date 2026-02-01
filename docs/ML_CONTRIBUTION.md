@@ -1,6 +1,6 @@
-# Contributing Intelligence to the QuantGrid Hive Mind
+# Contributing Intelligence to the AnchorGrid Hive Mind
 
-This guide shows you how to **train and contribute your own financial models** to improve QuantGrid for everyone.
+This guide shows you how to **train and contribute your own financial models** to improve AnchorGrid for everyone.
 
 > **"Your private data stays private. Only the trained adapter leaves your machine."**
 
@@ -8,7 +8,7 @@ This guide shows you how to **train and contribute your own financial models** t
 
 ## Why Contribute?
 
-When you contribute a trained adapter to QuantGrid:
+When you contribute a trained adapter to AnchorGrid:
 
 1. **Your Intelligence Lives Forever**: Your model becomes part of the collective intelligence
 2. **You're Listed as a Contributor**: Get credit in our global leaderboard
@@ -26,7 +26,7 @@ When you contribute a trained adapter to QuantGrid:
 
 **Software:**
 ```bash
-pip install quantgrid[ml]
+pip install anchorgrid[ml]
 ```
 
 ---
@@ -62,10 +62,10 @@ Create a JSON file with financial question-answer pairs:
 ### Step 2: Train Your Adapter
 
 ```python
-from quantgrid.ml.trainer import QuantGridTrainer
+from anchorgrid.ml.trainer import AnchorGridTrainer
 
 # Initialize trainer (uses standardized LoRA settings)
-trainer = QuantGridTrainer()
+trainer = AnchorGridTrainer()
 
 # Train on your data
 trainer.train(
@@ -93,7 +93,7 @@ trainer.train(
 #### 3a. Package Your Adapter
 
 ```python
-from quantgrid.hub.submit import prepare_submission
+from anchorgrid.hub.submit import prepare_submission
 
 prepare_submission(
     adapter_dir="./my_sec_adapter",
@@ -103,7 +103,7 @@ prepare_submission(
 
 # Output:
 # READY FOR UPLOAD!
-# File: quantgrid_submission_1704321600.zip
+# File: anchorgrid_submission_1704321600.zip
 # Hash: a1b2c3d4...
 ```
 
@@ -111,13 +111,13 @@ prepare_submission(
 
 ```bash
 # First time: Authenticate
-quantgrid login
+anchorgrid login
 
 # Upload your adapter
-quantgrid push quantgrid_submission_1704321600.zip
+anchorgrid push anchorgrid_submission_1704321600.zip
 
 # Check status
-quantgrid status your_submission_id
+anchorgrid status your_submission_id
 ```
 
 **What Happens Next:**
@@ -161,7 +161,7 @@ Top contributors are ranked by:
 
 View the leaderboard:
 ```bash
-quantgrid leaderboard
+anchorgrid leaderboard
 ```
 
 ---
@@ -172,11 +172,11 @@ Don't have a GPU? Use Colab:
 
 ```python
 # In Colab notebook:
-!pip install quantgrid[ml]
+!pip install anchorgrid[ml]
 
-from quantgrid.ml.trainer import QuantGridTrainer
+from anchorgrid.ml.trainer import AnchorGridTrainer
 
-trainer = QuantGridTrainer()
+trainer = AnchorGridTrainer()
 trainer.train("my_data.json", output_dir="./adapter")
 
 # Download the adapter to your machine
@@ -211,7 +211,7 @@ The most valuable contributions are **specialized knowledge**:
 ## FAQ
 
 **Q: Can I keep my adapter private?**  
-A: No - QuantGrid Hub is for collective intelligence. For private models, train locally without submitting.
+A: No - AnchorGrid Hub is for collective intelligence. For private models, train locally without submitting.
 
 **Q: Will I see others' raw data?**  
 A: No - only trained weights are shared, never raw data.
@@ -232,20 +232,20 @@ A: No - adapters are cumulative. Your contribution lives forever.
 
 ## Join the Hive Mind
 
-Every contribution makes QuantGrid smarter. Your expertise in pharmaceutical earnings calls, European equities, or crypto fundamentals fills gaps that generic models miss.
+Every contribution makes AnchorGrid smarter. Your expertise in pharmaceutical earnings calls, European equities, or crypto fundamentals fills gaps that generic models miss.
 
 **Ready to contribute?**
 
 ```bash
 # Install ML dependencies
-pip install quantgrid[ml]
+pip install anchorgrid[ml]
 
 # Authenticate with Hub
-quantgrid login
+anchorgrid login
 
 # Train and push your first adapter
 python my_training_script.py
-quantgrid push my_adapter.zip
+anchorgrid push my_adapter.zip
 ```
 
 **Questions?** Open an issue on GitHub or join our Discord.

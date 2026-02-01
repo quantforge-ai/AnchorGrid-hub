@@ -1,364 +1,339 @@
-# Contributing to QuantGrid
+# Contributing to AnchorGrid
 
-**Welcome to the Hive Mind!**
+Thank you for your interest in contributing to AnchorGrid! This document provides guidelines for contributing to the project.
 
-QuantGrid is the world's first federated learning network for finance. We're building collective intelligence through community contributions.
+## 🎯 Project Vision
 
-There are **two ways to contribute**:
-
-1. **Code Contributions** - Improve the core infrastructure
-2. **Intelligence Contributions** - Share your trained model weights (THE BIG ONE)
+AnchorGrid is building the **secure infrastructure for agentic AI in regulated industries**. Our unique value proposition is **Proof-of-Integrity Discovery** - the first agent network where compliance is verified before agents can join.
 
 ---
 
-## Intelligence Contributions (Model Weights)
+## 🚀 Ways to Contribute
 
-**This is what makes QuantGrid revolutionary.**
+### 1. **New Domain Plugins**
 
-### Why Share Your Weights?
+We're expanding beyond Finance into Medical, Legal, and Code domains.
 
-**The power of collective learning.**
+**What we need:**
+- Domain-specific connectors (data sources)
+- Domain-specific extractors (feature engineering)
+- Domain-specific agents (AI reasoning logic)
 
-When you share your trained LoRA adapter:
-- You keep your data **100% private** (only weights are shared)
-- Your expertise becomes part of the collective intelligence
-- You gain access to everyone else's expertise
-- You get credited on the global leaderboard
-- The entire community benefits (including you!)
+**Example structure:**
+```
+anchorgrid/plugins/medical/
+├── agent.py              # MedicalAgent class
+├── manifest.json         # Plugin metadata
+├── connectors/
+│   └── dicom_reader.py   # Medical imaging data
+└── extractors/
+    └── tumor_detector.py # Feature extraction
+```
 
-### What You Can Train On
+**How to start:**
+1. Copy `plugins/finance/` as a template
+2. Replace Finance logic with your domain
+3. Test with `anchorgrid run --plugin <domain> <task>`
+4. Submit PR
 
-Any financial domain expertise:
-- **SEC Filings Analysis** (10-K, 10-Q, 8-K interpretation)
-- **Earnings Call Summarization** (extracting key insights)
-- **Technical Analysis** (chart pattern recognition)
-- **News Sentiment** (financial news understanding)
-- **Options Strategy** (complex derivatives)
-- **Risk Assessment** (portfolio risk analysis)
-- **Macro Economics** (FRED data interpretation)
-- **And anything else related to finance!**
+### 2. **Security / Red-Teaming**
 
----
+Help us make the Verification Layer bulletproof.
 
-## Quick Start: Contribute Your First Adapter
+**Attack vectors to test:**
+- Can you bypass Anchor certificate validation?
+- Can you register a malicious agent?
+- Can you fake a trust score?
+- Can you inject code through the discovery protocol?
 
-### Step 1: Train Your Model
+**How to contribute:**
+1. Fork the repo
+2. Try to break `anchorgrid/core/discovery.py`
+3. Document the exploit
+4. Submit security issue (private disclosure)
 
+### 3. **Performance Optimization**
+
+**Areas needing optimization:**
+- Discovery protocol (can we handle 10,000+ agents?)
+- Universal Engine (reduce latency)
+- P2P distribution (faster downloads)
+
+**Benchmarking:**
+```bash
+# Run performance tests
+python -m pytest tests/perf/ -v
+
+# Profile discovery
+python -m cProfile demo_discovery.py
+```
+
+### 4. **Policy Integrations**
+
+**What we need:**
+- FINOS policy parser (YAML → Anchor checks)
+- OWASP Agentic Top 10 ruleset
+- Custom policy templates
+
+**Example:**
 ```python
-from quantgrid.ml import FinancialLLM, TrainingConfig
-from quantgrid.tools import TrainingPipeline
-from quantgrid.core.zon_engine import ZONEngine
+# anchorgrid/policies/finos.py
 
-# Initialize ZON engine for efficient data encoding
-zon = ZONEngine()
-
-# 1. Prepare your private dataset in ZON format
-# ZON is QuantGrid's token-efficient format - saves ~40% tokens vs JSON!
-your_dataset_zon = """
-q:Analyze this 10-K|i:Item 1. Business
-Apple Inc. designs, manufactures...|o:Revenue up 15% YoY $394B, margin 43.3%, cash $166B. iPhone up 9%, Services up 14%. Bullish.
----
-q:What's the RSI telling us?|i:AAPL RSI=25, MACD bullish crossover|o:Oversold + momentum = BUY signal. Entry $258, target $280.
----
-q:Summarize earnings call|i:Q4 2023: Beat EPS $1.52 vs $1.39 est...|o:Beat on revenue & EPS. Services strong. iPhone demand solid. Guidance raised.
-"""
-
-# Convert ZON to training format
-your_dataset = zon.parse_training_data(your_dataset_zon)
-
-# 2. Configure training
-config = TrainingConfig(
-    model_name="my-sec-expert-v1",
-    base_model="mistralai/Mistral-7B-v0.1",
-    dataset_size=len(your_dataset),
-    epochs=3,
-    lora_r=16,        # Standardized
-    lora_alpha=32,    # Standardized
-)
-
-# 3. Train the adapter
-model = FinancialLLM()
-model.prepare_for_training(config)
-adapter_path = model.train(your_dataset, config)
-
-print(f"Adapter trained: {adapter_path}")
+def parse_finos_threat_model(yaml_file):
+    """Convert FINOS YAML to Anchor policy"""
+    threats = load_yaml(yaml_file)
+    policy = AnchorPolicy()
+    
+    for threat in threats:
+        if threat.type == "BIAS":
+            policy.add_check(BiasCheck(threshold=0.05))
+    
+    return policy
 ```
 
-### Step 2: Evaluate Locally
+### 5. **Documentation**
 
-Before submitting, test your adapter:
-
-```python
-from quantgrid.hub import ProofOfLoss
-
-# Evaluate on local benchmark
-evaluator = ProofOfLoss()
-metrics = evaluator.evaluate_adapter(
-    model=model,
-    tokenizer=model.tokenizer,
-    num_examples=100
-)
-
-print(f"Loss: {metrics['loss']:.4f}")
-print(f"Accuracy: {metrics['accuracy']:.2%}")
-print(f"Passed Quality Gate: {metrics['passed']}")
-```
-
-### Step 3: Submit to Hub
-
-```python
-from quantgrid.hub import hub
-import hashlib
-
-# Calculate dataset hash (proof of work)
-dataset_str = str(your_dataset).encode()
-dataset_hash = hashlib.sha256(dataset_str).hexdigest()
-
-# Submit to the collective
-metadata = hub.contribute_intelligence(
-    adapter_path=adapter_path,
-    domain="sec_filings",  # Your domain
-    dataset_hash=dataset_hash,
-    training_examples=len(your_dataset),
-    metadata={
-        "description": "Expert at analyzing 10-K filings",
-        "version": "1.0.0"
-    }
-)
-
-print(f"Submitted! Adapter ID: {metadata.adapter_id}")
-```
-
-### Step 4: What Happens Next
-
-1. **Automated Evaluation** - Your adapter runs on our hidden benchmark
-2. **Quality Check** - If `Loss < Official_Model_Loss`, you pass
-3. **Community Review** - Other developers test and vote
-4. **Monthly Aggregation** - Top adapters merged into next release
-5. **Global Recognition** - You appear on the contributor leaderboard!
+**Always valuable:**
+- Improve README clarity
+- Add code examples
+- Create tutorials
+- Write blog posts
 
 ---
 
-## Quality Standards
+## 📝 Contribution Process
 
-### Minimum Requirements
-
-To be accepted into the collective, your adapter must:
-
-- **Performance**: Loss < Official Baseline (evaluated on hidden benchmark)  
-- **Training Data**: Minimum 1,000 examples  
-- **Documentation**: Clear description of what your adapter does  
-- **License**: MIT or Apache 2.0 (open contribution)  
-- **Integrity**: Passes security scan (no malicious code)
-
-### Evaluation Process
-
-**Proof of Loss System:**
-```
-Adapter Submitted
-    ↓
-Automated Evaluation on Hidden Benchmark (1000 examples)
-    ↓
-Loss < Official Model? 
-    ↓           ↓
-   YES         NO
-    ↓           ↓
-  ACCEPT      REJECT
-```
-
-No politics. No bias. **Just math.**
-
----
-
-## Contributor Leaderboard
-
-Top contributors gain:
-
-- **Global recognition** on hub.quantgrid.dev
-- **Badges** on your GitHub profile
-- **Early access** to new features
-- **Premium features** for free
-- **Potential bounties** for high-impact domains
-
-### Scoring System
-
-Your score is calculated from:
-- **Evaluation Performance** (50%) - How much your adapter improves the model
-- **Community Votes** (30%) - Real-world feedback from users
-- **Training Scale** (10%) - Number of examples used
-- **Adoption** (10%) - How many people use your adapter
-
----
-
-## Privacy & Security
-
-### What Gets Shared
-
-- **Shared**: LoRA adapter weights (~100MB per adapter)  
-- **Shared**: Evaluation metrics and performance scores  
-- **Shared**: General domain description  
-
-- **NOT Shared**: Your raw training data  
-- **NOT Shared**: Your data sources or methodology  
-- **NOT Shared**: Any personally identifiable information
-
-### Security Checks
-
-Every submission goes through:
-1. **Malware Scan** - Check for malicious code
-2. **Size Verification** - Must be reasonable size (~50-200MB)
-3. **Format Validation** - Must be valid LoRA adapter
-4. **Hallucination Check** - Tested for factual accuracy
-5. **Bias Detection** - Screened for harmful biases
-
----
-
-## Code Contributions
-
-### Setting Up Development Environment
+### Step 1: Fork & Clone
 
 ```bash
-# Clone the repository
-git clone https://github.com/QuantGrid/quantgrid-core.git
-cd quantgrid-core
-
-# Install in development mode
-pip install -e ".[dev]"
-
-# Run tests
-pytest tests/
-
-# Check code quality
-black quantgrid/
-ruff quantgrid/
-mypy quantgrid/
+git clone https://github.com/YourUsername/anchorgrid-core.git
+cd anchorgrid-core
 ```
 
-### Contribution Workflow
-
-1. **Fork** the repository
-2. **Create a branch**: `git checkout -b feature/your-feature`
-3. **Make changes** with clear commits
-4. **Write tests** for new functionality
-5. **Run all tests** to ensure nothing breaks
-6. **Format code**: `black .` and `ruff --fix .`
-7. **Submit PR** with clear description
-
-### Code Standards
-
-- **Python 3.11+** required
-- **Type hints** for all functions
-- **Docstrings** with examples
-- **Test coverage** > 80%
-- **Black** formatting
-- **Ruff** linting
-
----
-
-## Documentation Contributions
-
-Help improve our docs:
-
-- **API Documentation** - Document new features
-- **Tutorials** - Write guides for common tasks
-- **Examples** - Share your use cases
-- **Translation** - Help translate to other languages
-
----
-
-## Community Guidelines
-
-### Code of Conduct
-
-We are committed to providing a welcoming and inclusive environment:
-
-- **Be Respectful** - Treat everyone with kindness
-- **Be Collaborative** - Help others learn and grow
-- **Be Professional** - Keep discussions focused
-- **Be Open-Minded** - Welcome diverse perspectives
-
-### Communication Channels
-
-- **GitHub Issues** - Bug reports and feature requests
-- **GitHub Discussions** - General questions and ideas
-- **Discord** (coming soon) - Real-time chat
-- **Email** - support@quantgrid.dev
-
----
-
-## Bounty Program
-
-We offer bounties for high-impact contributions:
-
-### Active Bounties
-
-- **$500** - First 10-K filing expert (Loss < 0.4)
-- **$500** - Earnings call specialist (Loss < 0.4)
-- **$1000** - Multi-domain expert (SEC + Earnings + Technical)
-- **$2000** - Create evaluation benchmark (1000 verified examples)
-
-Check [hub.quantgrid.dev/bounties](https://hub.quantgrid.dev/bounties) for current opportunities.
-
----
-
-## Resources
-
-### Training Guides
-
-- [ML Training Guide](./docs/ML_TRAINING.md) - Complete training tutorial
-- [Dataset Preparation](./docs/DATASET_PREP.md) - How to format your data
-- [Evaluation Guide](./docs/EVALUATION.md) - Understanding metrics
-- [Best Practices](./docs/BEST_PRACTICES.md) - Tips for success
-
-### Example Contributions
-
-See `examples/` directory for reference implementations:
-- `sec_filings_adapter/` - SEC filing analysis example
-- `earnings_calls_adapter/` - Earnings summarization example
-- `technical_analysis_adapter/` - Chart pattern recognition
-
----
-
-## Getting Help
-
-**Stuck? We're here to help!**
-
-1. **Check Documentation** - [docs/](./docs/)
-2. **Search Issues** - Someone may have asked before
-3. **Ask on Discussions** - Community support
-4. **Email Us** - support@quantgrid.dev
-
----
-
-## License
-
-By contributing, you agree that your contributions will be licensed under the **MIT License**.
-
-For intelligence contributions (model weights), you agree:
-- Your adapter is licensed under MIT or Apache 2.0
-- You have the right to share the trained weights
-- You understand weights may be merged into the official model
-- You retain credit for your contribution
-
----
-
-## Thank You!
-
-Every contribution makes QuantGrid stronger. Together, we're building the future of financial intelligence.
-
-**Let's build the Hive Mind together!**
-
----
-
-**Ready to contribute?**
+### Step 2: Create Branch
 
 ```bash
-# Fork and clone
-git clone https://github.com/YOUR_USERNAME/quantgrid-core.git
-
-# Start contributing!
-cd quantgrid-core
-pip install -e ".[dev]"
+git checkout -b feature/your-feature-name
 ```
 
-See you in the Hive!
+**Branch naming:**
+- `feature/medical-plugin` (new features)
+- `fix/discovery-memory-leak` (bug fixes)
+- `docs/cli-tutorial` (documentation)
+- `perf/engine-optimization` (performance)
+
+### Step 3: Make Changes
+
+**Code style:**
+- Use type hints (`def func(x: int) -> str:`)
+- Add docstrings (Google style)
+- Format with `black` (line length: 88)
+- Lint with `ruff`
+
+**Example:**
+```python
+def register_agent(
+    agent_id: str,
+    capabilities: List[str],
+    anchor_cert: dict,
+    policy: str
+) -> AgentInfo:
+    """
+    Register agent with Anchor verification.
+    
+    Args:
+        agent_id: Unique identifier for agent
+        capabilities: List of capabilities (e.g., ["finance", "analysis"])
+        anchor_cert: Anchor compliance certificate
+        policy: Policy name (e.g., "finos-financial")
+    
+    Returns:
+        AgentInfo object with registration details
+    
+    Raises:
+        RegistrationError: If verification fails
+    """
+    # Implementation
+```
+
+### Step 4: Test
+
+```bash
+# Run all tests
+pytest
+
+# Run specific test
+pytest tests/test_discovery.py
+
+# Check coverage
+pytest --cov=anchorgrid --cov-report=html
+```
+
+### Step 5: Commit
+
+```bash
+git add .
+git commit -m "feat: Add medical plugin with DICOM support"
+```
+
+**Commit message format:**
+- `feat: Add new feature`
+- `fix: Fix bug in discovery protocol`
+- `docs: Update README`
+- `perf: Optimize engine latency`
+- `test: Add discovery tests`
+- `refactor: Simplify verification logic`
+
+### Step 6: Push & PR
+
+```bash
+git push origin feature/your-feature-name
+```
+
+Then open a Pull Request on GitHub.
+
+**PR checklist:**
+- [ ] Tests pass
+- [ ] Documentation updated
+- [ ] No breaking changes (or clearly marked)
+- [ ] Follows code style
+- [ ] Security reviewed (if applicable)
+
+---
+
+## 🏗️ Project Structure
+
+```
+anchorgrid-core/
+├── anchorgrid/
+│   ├── core/              # Discovery, engine, security
+│   ├── plugins/           # Domain-specific agents
+│   ├── cli.py             # Main CLI
+│   └── db/                # Database models
+│
+├── tests/                 # Test suite
+├── docs/                  # Documentation
+├── demo_discovery.py      # Demo scripts
+└── README.md
+```
+
+---
+
+## 🧪 Testing Guidelines
+
+### Unit Tests
+
+```python
+# tests/test_discovery.py
+
+def test_register_valid_agent():
+    """Test successful registration with valid cert"""
+    cert = {"score": 98, "hash": "0xabc", "expires": future_date}
+    
+    agent = discovery.register_agent(
+        agent_id="TestBot",
+        capabilities=["test"],
+        anchor_cert=cert,
+        policy="test-policy"
+    )
+    
+    assert agent.agent_id == "TestBot"
+    assert agent.anchor_score == 98
+```
+
+### Integration Tests
+
+```python
+# tests/test_integration.py
+
+def test_full_discovery_flow():
+    """Test register → discover → verify flow"""
+    # 1. Register agent
+    discovery.register_agent(...)
+    
+    # 2. Discover agents
+    agents = discovery.discover(capability="finance")
+    
+    # 3. Verify trust scores
+    assert all(a.anchor_score >= 95 for a in agents)
+```
+
+---
+
+## 🛡️ Security Guidelines
+
+### Reporting Vulnerabilities
+
+**DO NOT** open public issues for security vulnerabilities.
+
+**Instead:**
+1. Email: [your-security-email]
+2. Use GitHub Security Advisories (private disclosure)
+3. Wait for response before public disclosure
+
+### Security Checklist
+
+When contributing security-sensitive code:
+
+- [ ] Input validation (no SQL injection)
+- [ ] Cryptographic signatures verified
+- [ ] No hardcoded secrets
+- [ ] Audit trail for sensitive operations
+- [ ] Rate limiting (prevent DoS)
+
+---
+
+## 📚 Resources
+
+### Learn More
+
+- [Architecture Vision](docs/architecture.md)
+- [Phase 4 Plan](docs/phase4_poid_plan.md)
+- [GSoC Proposal](docs/gsoc_proposal.md)
+
+### Communication
+
+- **GitHub Issues:** Bug reports, feature requests
+- **GitHub Discussions:** Questions, ideas
+- **OWASP Slack:** #anchorgrid (coming soon)
+
+---
+
+## 🎓 For GSoC Contributors
+
+### Getting Started
+
+1. Read the [GSoC proposal](docs/gsoc_proposal.md)
+2. Pick a Phase 5 task (Medical/Legal/Code plugins)
+3. Check existing issues labeled `gsoc-2026`
+4. Introduce yourself in GitHub Discussions
+
+### Mentorship
+
+Mentors available for:
+- Architecture questions
+- Code reviews
+- Governance policy questions
+- Career advice
+
+---
+
+## 🏆 Recognition
+
+All contributors will be:
+- Listed in CONTRIBUTORS.md
+- Credited in release notes
+- Eligible for swag (coming soon)
+
+**Top contributors:**
+- Co-author credit in papers
+- Speaker opportunities at conferences
+- Direct collaboration with Anchor/FINOS teams
+
+---
+
+## ❤️ Thank You!
+
+Every contribution matters - from fixing typos to building entire plugins. Together, we're building the secure foundation for agentic AI.
+
+**Let's make regulated agentic AI a reality.** 🚀🔐

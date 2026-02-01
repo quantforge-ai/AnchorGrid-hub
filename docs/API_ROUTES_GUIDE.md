@@ -1,10 +1,10 @@
-# QuantGrid API & Routes Guide
+# AnchorGrid API & Routes Guide
 
-The `quantgrid.api` and `quantgrid.routes` packages define the interaction layer for external applications and the Grid Terminal.
+The `anchorgrid.api` and `anchorgrid.routes` packages define the interaction layer for external applications and the Grid Terminal.
 
-## Platform API (`quantgrid.api`)
+## Platform API (`anchorgrid.api`)
 
-Standard REST endpoints for the QuantGrid Intelligence Platform. These routes use versioning (defaulting to `/api/v1/`).
+Standard REST endpoints for the AnchorGrid Intelligence Platform. These routes use versioning (defaulting to `/api/v1/`).
 
 ### Version 1 Endpoints
 - `/auth/`: User registration and JWT management.
@@ -13,9 +13,9 @@ Standard REST endpoints for the QuantGrid Intelligence Platform. These routes us
 - `/vector/`: Semantic search and document retrieval.
 - `/health`: System diagnostics.
 
-## Terminal Routes (`quantgrid.routes`)
+## Terminal Routes (`anchorgrid.routes`)
 
-Internal endpoints optimized for the QuantGrid Terminal dashboard.
+Internal endpoints optimized for the AnchorGrid Terminal dashboard.
 - Live data streaming over WebSockets.
 - Dashboard-specific data structures.
 - User preference persistence.

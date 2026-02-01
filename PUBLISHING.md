@@ -1,4 +1,4 @@
-# QuantGrid PyPI Publishing Guide
+# AnchorGrid PyPI Publishing Guide
 
 ## Prerequisites
 
@@ -9,13 +9,13 @@ pip install build twine
 ## Build the Package
 
 ```bash
-cd D:\QuantGrid-core
+cd D:\AnchorGrid-core
 python -m build
 ```
 
 This creates:
-- `dist/quantgrid-1.0.0.tar.gz` (source)
-- `dist/quantgrid-1.0.0-py3-none-any.whl` (wheel)
+- `dist/anchorgrid-1.0.0.tar.gz` (source)
+- `dist/anchorgrid-1.0.0-py3-none-any.whl` (wheel)
 
 ## Test Upload to TestPyPI (Recommended First)
 
@@ -24,7 +24,7 @@ This creates:
 twine upload --repository testpypi dist/*
 
 # Install from TestPyPI to test
-pip install --index-url https://test.pypi.org/simple/ quantgrid
+pip install --index-url https://test.pypi.org/simple/ anchorgrid
 ```
 
 ## Publish to PyPI
@@ -42,12 +42,12 @@ You'll be prompted for:
 
 Install from PyPI:
 ```bash
-pip install quantgrid
+pip install anchorgrid
 ```
 
 Or with ML support:
 ```bash
-pip install quantgrid[ml]
+pip install anchorgrid[ml]
 ```
 
 ## Version Updates
@@ -55,12 +55,12 @@ pip install quantgrid[ml]
 When releasing a new version:
 
 1. Update version in `pyproject.toml`
-2. Update version in `quantgrid/__init__.py` 
+2. Update version in `anchorgrid/__init__.py` 
 3. Create git tag: `git tag v1.0.0`
 4. Rebuild and republish
 
 ## Notes
 
 - Package size is ~100MB due to all dependencies
-- Consider splitting into `quantgrid-core`, `quantgrid-ml` if size is an issue
+- Consider splitting into `anchorgrid-core`, `anchorgrid-ml` if size is an issue
 - ML dependencies are heavy (torch, transformers) - users can skip with base install

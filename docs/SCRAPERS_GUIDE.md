@@ -1,6 +1,6 @@
-# QuantGrid Scrapers Guide
+# AnchorGrid Scrapers Guide
 
-The `quantgrid.scrapers` package provides zero-cost financial data extraction. It is designed to work without expensive API keys by utilizing optimized web scrapers and public data endpoints.
+The `anchorgrid.scrapers` package provides zero-cost financial data extraction. It is designed to work without expensive API keys by utilizing optimized web scrapers and public data endpoints.
 
 ## Available Scrapers
 
@@ -33,7 +33,7 @@ Data from global central banks (ECB, BOJ, BOE, RBI).
 ## Usage Example
 
 ```python
-from quantgrid.scrapers import yfinance_scraper, sec_scraper
+from anchorgrid.scrapers import yfinance_scraper, sec_scraper
 
 # Get real-time quote
 quote = yfinance_scraper.get_quote("AAPL")
@@ -46,7 +46,7 @@ print(f"Latest Filing URL: {filings[0]['url']}")
 
 ## API Discovery Tool
 
-The Discovery Tool is located in `quantgrid.tools.api_discovery`. It allows you to auto-generate scrapers for any new financial website by analyzing network traffic and identifying JSON endpoints.
+The Discovery Tool is located in `anchorgrid.tools.api_discovery`. It allows you to auto-generate scrapers for any new financial website by analyzing network traffic and identifying JSON endpoints.
 
 ---
 

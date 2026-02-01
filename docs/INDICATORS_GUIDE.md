@@ -1,6 +1,6 @@
-# QuantGrid Indicators Guide
+# AnchorGrid Indicators Guide
 
-The `quantgrid.indicators` package contains high-performance quantitative calculation modules. It is optimized for sub-millisecond execution and supports incremental updates for real-time trading systems.
+The `anchorgrid.indicators` package contains high-performance quantitative calculation modules. It is optimized for sub-millisecond execution and supports incremental updates for real-time trading systems.
 
 ## Core Modules
 
@@ -25,9 +25,9 @@ Utilities for merging multiple indicators into a single actionable score.
 ## Performance Features
 
 ### O(1) Incremental Updates
-Unlike traditional libraries that recalculate the entire series, QuantGrid indicators support an "Update" mode:
+Unlike traditional libraries that recalculate the entire series, AnchorGrid indicators support an "Update" mode:
 ```python
-from quantgrid.indicators import RSI
+from anchorgrid.indicators import RSI
 
 # Initialize
 rsi_engine = RSI(period=14)
@@ -41,7 +41,7 @@ latest_rsi = rsi_engine.update(new_price)
 ## Usage Example
 
 ```python
-from quantgrid.indicators import macd, detect_volatility_regime
+from anchorgrid.indicators import macd, detect_volatility_regime
 
 # Calculate MACD
 macd_line, signal, hist = macd(price_series)

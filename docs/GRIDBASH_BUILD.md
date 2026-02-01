@@ -2,7 +2,7 @@
 
 ## What is Grid Bash?
 
-Grid Bash is a **standalone terminal environment** for QuantGrid - inspired by Git Bash but purpose-built for financial intelligence. When developers open Grid Bash, they enter a curated environment where QuantGrid commands (`train`, `push`, `pull`) work seamlessly alongside standard commands (`git`, `ls`, `python`).
+Grid Bash is a **standalone terminal environment** for AnchorGrid - inspired by Git Bash but purpose-built for financial intelligence. When developers open Grid Bash, they enter a curated environment where AnchorGrid commands (`train`, `push`, `pull`) work seamlessly alongside standard commands (`git`, `ls`, `python`).
 
 ---
 
@@ -11,7 +11,7 @@ Grid Bash is a **standalone terminal environment** for QuantGrid - inspired by G
 ### Windows
 
 **Option 1: Installer (Recommended)**
-1. Download `QuantGrid_Setup_v1.0.exe`
+1. Download `AnchorGrid_Setup_v1.0.exe`
 2. Run the installer
 3. Click "Next" through the wizard
 4. Launch from Desktop shortcut or right-click any folder → "Open Grid Bash Here"
@@ -25,7 +25,7 @@ Grid Bash is a **standalone terminal environment** for QuantGrid - inspired by G
 
 ```bash
 # Download and install
-curl -O https://quantgrid.dev/downloads/gridbash
+curl -O https://anchorgrid.dev/downloads/gridbash
 chmod +x gridbash
 sudo mv gridbash /usr/local/bin/
 
@@ -55,15 +55,15 @@ pip install pyinstaller  # For building
 
 ```bash
 # From project root
-python -m quantgrid.shell.main
+python -m anchorgrid.shell.main
 ```
 
 You should see:
 ```
-QUANTGRID TERMINAL v1.0
+ANCHORGRID TERMINAL v1.0
 The Operating System for Financial Intelligence
 
-(grid) guest@QuantGrid-core $
+(grid) guest@AnchorGrid-core $
 ```
 
 Try commands:
@@ -108,10 +108,10 @@ chmod +x build.sh
 **Steps**:
 1. Open `installers/windows/setup.iss` in Inno Setup Compiler
 2. Click **Compile** (Ctrl+F9)
-3. Output: `installers/windows/Output/QuantGrid_Setup_v1.0.exe`
+3. Output: `installers/windows/Output/AnchorGrid_Setup_v1.0.exe`
 
 **What the Installer Does**:
-- Installs to `C:\Program Files\QuantGrid\`
+- Installs to `C:\Program Files\AnchorGrid\`
 - Adds to system PATH (type `gridbash` anywhere)
 - Creates desktop shortcut
 - Adds right-click menu: "Open Grid Bash Here"
@@ -122,8 +122,8 @@ chmod +x build.sh
 ## File Structure
 
 ```
-QuantGrid-core/
-├── quantgrid/
+AnchorGrid-core/
+├── anchorgrid/
 │   └── shell/
 │       ├── __init__.py
 │       └── main.py              # The shell engine
@@ -149,7 +149,7 @@ Before releasing, test:
 - `ls models` shows Grid-specific listing
 - `cd` changes directory and updates prompt
 - `login` / `logout` work
-- `init` creates `.quantgrid/` folder
+- `init` creates `.anchorgrid/` folder
 - `exit` cleanly closes shell
 - Command history persists (up arrow)
 - Auto-completion works (type `tr` + Tab)
@@ -163,7 +163,7 @@ Before releasing, test:
 
 ### Change Color Theme
 
-Edit `quantgrid/shell/main.py`:
+Edit `anchorgrid/shell/main.py`:
 
 ```python
 style = Style.from_dict({
@@ -206,15 +206,15 @@ Add to `GRID_COMMANDS` list and create handler in `execute()` method.
 2. **Version Bump**: Update version in `setup.iss` and `main.py`
 3. **Changelog**: Document new features
 4. **Build Installer**: Compile with Inno Setup
-5. **Upload**: Host on GitHub Releases or quantgrid.dev
+5. **Upload**: Host on GitHub Releases or anchorgrid.dev
 6. **Announce**: Blog post, Twitter, Discord
 
 ### Download Links
 
 Structure:
 ```
-https://quantgrid.dev/downloads/
-  ├── windows/QuantGrid_Setup_v1.0.exe
+https://anchorgrid.dev/downloads/
+  ├── windows/AnchorGrid_Setup_v1.0.exe
   ├── linux/gridbash
   └── macos/gridbash.dmg
 ```
@@ -233,4 +233,4 @@ https://quantgrid.dev/downloads/
 
 ---
 
-**Built with pride by the QuantGrid Team**
+**Built with pride by the AnchorGrid Team**

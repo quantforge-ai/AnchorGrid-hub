@@ -1,10 +1,10 @@
-# QuantGrid Database & ML Guide
+# AnchorGrid Database & ML Guide
 
-The `quantgrid.db` and `quantgrid.ml` packages manage the persistence layer and the neural training infrastructure.
+The `anchorgrid.db` and `anchorgrid.ml` packages manage the persistence layer and the neural training infrastructure.
 
-## Database Infrastructure (`quantgrid.db`)
+## Database Infrastructure (`anchorgrid.db`)
 
-QuantGrid uses a dual-database approach:
+AnchorGrid uses a dual-database approach:
 - **PostgreSQL/TimescaleDB**: For structured user data and high-frequency market history.
 - **Weaviate**: For vector embeddings and semantic search.
 
@@ -17,7 +17,7 @@ QuantGrid uses a dual-database approach:
 ### Vector Search
 The `rag_service.py` (in services) interacts with the DB layer to perform semantic retrieval from SEC filings and news archives.
 
-## Machine Learning Engine (`quantgrid.ml`)
+## Machine Learning Engine (`anchorgrid.ml`)
 
 The ML layer is focused on LoRA (Low-Rank Adaptation) fine-tuning for financial LLMs.
 
@@ -37,11 +37,11 @@ Management of local model weights and Hive Mind versioning.
 ## Usage Example
 
 ```python
-from quantgrid.ml.trainer import QuantGridTrainer
-from quantgrid.db import SessionLocal
+from anchorgrid.ml.trainer import AnchorGridTrainer
+from anchorgrid.db import SessionLocal
 
 # Run a training job
-trainer = QuantGridTrainer()
+trainer = AnchorGridTrainer()
 trainer.train(dataset="my_research.zon", output_dir="./expert_model")
 
 # Query the DB

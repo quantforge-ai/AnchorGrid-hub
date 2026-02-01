@@ -1,6 +1,6 @@
-# QuantGrid Core Logic Guide
+# AnchorGrid Core Logic Guide
 
-The `quantgrid.core` package contains the foundational utilities and infrastructure that power the entire ecosystem. It handles configuration, security, data serialization, and communication protocols.
+The `anchorgrid.core` package contains the foundational utilities and infrastructure that power the entire ecosystem. It handles configuration, security, data serialization, and communication protocols.
 
 ## Key Modules
 
@@ -35,8 +35,8 @@ Standardized metadata for AI models.
 ## Usage Example
 
 ```python
-from quantgrid.core.llm_router import LLMRouter
-from quantgrid.core.zon_engine import ZONEngine
+from anchorgrid.core.llm_router import LLMRouter
+from anchorgrid.core.zon_engine import ZONEngine
 
 # Route a prompt
 router = LLMRouter()

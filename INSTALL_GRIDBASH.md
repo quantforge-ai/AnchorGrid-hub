@@ -1,11 +1,11 @@
 # Grid Bash Installation Guide
 
-## Quick Start (Conda Environment: QuantGrid-core)
+## Quick Start (Conda Environment: AnchorGrid-core)
 
 ### 1. Activate Your Environment
 
 ```bash
-conda activate QuantGrid-core
+conda activate AnchorGrid-core
 ```
 
 ### 2. Install Dependencies
@@ -14,7 +14,7 @@ conda activate QuantGrid-core
 # Core dependencies for Grid Bash
 pip install prompt_toolkit rich psutil requests
 
-# Optional: If you want full QuantGrid functionality
+# Optional: If you want full AnchorGrid functionality
 pip install -e .
 ```
 
@@ -35,7 +35,7 @@ You should see the Matrix Glitch logo with:
 - Gradient rendering (blue to cyan)
 - "INITIALIZING HIVE MIND CONNECTION..."
 - System diagnostics progress bar
-- Then the shell prompt: `(grid) guest@QuantGrid-core $`
+- Then the shell prompt: `(grid) guest@AnchorGrid-core $`
 
 ### 4. Try Commands
 
@@ -49,12 +49,12 @@ Once in Grid Bash:
 
 ---
 
-## Full Installation (All QuantGrid Features)
+## Full Installation (All AnchorGrid Features)
 
 If you want the complete package with ML training capabilities:
 
 ```bash
-conda activate QuantGrid-core
+conda activate AnchorGrid-core
 
 # Install base package
 pip install -e .
@@ -105,7 +105,7 @@ chmod +x build.sh
 
 Make sure you've activated the conda environment:
 ```bash
-conda activate QuantGrid-core
+conda activate AnchorGrid-core
 ```
 
 ### Grid Bash won't start
@@ -120,9 +120,9 @@ Should show:
 - rich >= 13.7.0
 - psutil >= 5.9.0
 
-### Import errors from quantgrid package
+### Import errors from anchorgrid package
 
-The standalone demo (`demo_gridbash.py`) doesn't need the full package. But if you're running `python -m quantgrid.shell.main`, you need:
+The standalone demo (`demo_gridbash.py`) doesn't need the full package. But if you're running `python -m anchorgrid.shell.main`, you need:
 
 ```bash
 pip install -e .
@@ -133,7 +133,7 @@ pip install -e .
 ## Environment Info
 
 - **Python Version**: 3.12
-- **Conda Env**: QuantGrid-core
+- **Conda Env**: AnchorGrid-core
 - **Platform**: Windows/Linux/macOS
 
 ---

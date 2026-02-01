@@ -1,11 +1,11 @@
 # API Versioning Guide
 
-QuantGrid uses URL-based versioning for its REST APIs to ensure backward compatibility.
+AnchorGrid uses URL-based versioning for its REST APIs to ensure backward compatibility.
 
 ## Structure
 
 ```
-quantgrid/api/
+anchorgrid/api/
 ├── v1/              # Current stable API (v0.2.0+)
 │   ├── auth.py      # Authentication endpoints
 │   ├── ai.py        # AI analysis endpoints
@@ -22,7 +22,7 @@ quantgrid/api/
 
 ```python
 from fastapi import FastAPI
-from quantgrid.api import v1
+from anchorgrid.api import v1
 
 app = FastAPI()
 
@@ -53,7 +53,7 @@ app.include_router(v1.health.router, prefix="/api/v1/health", tags=["Health"])
 
 When introducing breaking changes:
 
-1. **Create v2 routes**: Add new endpoints in `quantgrid/api/v2/`
+1. **Create v2 routes**: Add new endpoints in `anchorgrid/api/v2/`
 2. **Deprecation warnings**: Add deprecation warnings to v1 endpoints
 3. **Grace period**: Maintain both v1 and v2 for 6 months minimum
 4. **Documentation**: Update docs with migration guide
@@ -75,12 +75,12 @@ response = httpx.get("http://localhost:8000/market/quote/AAPL")
 
 ```python
 # ✅ GOOD: Version-specific imports
-from quantgrid.api.v1 import market
+from anchorgrid.api.v1 import market
 
 app.include_router(market.router, prefix="/api/v1/market")
 
 # ❌ BAD: Generic imports (no version control)
-from quantgrid.api import market  # Which version?
+from anchorgrid.api import market  # Which version?
 ```
 
 ## Semantic Versioning
@@ -90,7 +90,7 @@ from quantgrid.api import market  # Which version?
 
 ## Terminal Routes (No Versioning)
 
-Terminal routes in `quantgrid/routes/` are NOT versioned as they're internal to the terminal application:
+Terminal routes in `anchorgrid/routes/` are NOT versioned as they're internal to the terminal application:
 
 ```python
 # These don't use versioning
@@ -101,6 +101,6 @@ app.include_router(paper_trading.router, prefix="/paper-trading")
 ---
 
 **Related Documentation:**
-- [API Reference](https://quantgrid.dev/docs/api)
-- [Migration Guide](https://quantgrid.dev/docs/migration)
-- [Breaking Changes Log](https://quantgrid.dev/docs/changelog)
+- [API Reference](https://anchorgrid.dev/docs/api)
+- [Migration Guide](https://anchorgrid.dev/docs/migration)
+- [Breaking Changes Log](https://anchorgrid.dev/docs/changelog)

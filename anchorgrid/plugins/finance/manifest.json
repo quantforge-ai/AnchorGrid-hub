@@ -1,0 +1,12 @@
+{
+    "id": "anchorgrid-finance-core",
+    "name": "AnchorGrid Finance Standard",
+    "version": "1.0.0",
+    "description": "Standard connectors (Yahoo/SEC) and extractors (RSI/MACD) for financial analysis.",
+    "author": "AnchorGrid Team",
+    "license": "MIT",
+    "capabilities": [
+        "connectors",
+        "extractors"
+    ]
+}
