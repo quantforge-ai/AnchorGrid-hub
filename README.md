@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/branding/logo.png" alt="AnchorGrid Hub" width="400"/>
+</p>
+
 # AnchorGrid - Secure Agentic Intelligence Network
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -91,11 +95,11 @@ Recommendation: HOLD
 
 ### Visual Overview
 
-![AnchorGrid Architecture](C:/Users/tanis/.gemini/antigravity/brain/9bf61c6b-6a4c-4d0f-a1b9-69c13064f890/poid_architecture_diagram_1769966291070.png)
+![AnchorGrid Architecture](assets/diagrams/architecture.png)
 
 ### Competitive Differentiation
 
-![AnchorGrid vs Traditional Networks](C:/Users/tanis/.gemini/antigravity/brain/9bf61c6b-6a4c-4d0f-a1b9-69c13064f890/anchorgrid_vs_traditional_1769966325456.png)
+![AnchorGrid vs Traditional Networks](assets/diagrams/comparison.png)
 
 ### Proof-of-Integrity Discovery (PoID)
 
