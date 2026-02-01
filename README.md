@@ -67,7 +67,7 @@ python demo_discovery.py --agent "FinanceBot" --cert-path ./certs/valid.pem
 
 ---
 
-## 🛡️ Competitive Differentiation
+## ⚔️ Competitive Differentiation
 
 Why AnchorGrid is necessary for the **Agentic Security Initiative**:
 
@@ -83,16 +83,29 @@ Why AnchorGrid is necessary for the **Agentic Security Initiative**:
 
 ## 🏗️ Architecture: The "Governance Handshake"
 
-The core innovation is the **PoID (Proof-of-Integrity Discovery)** protocol.
+The core innovation is the **PoID (Proof-of-Integrity Discovery)** protocol. Unlike standard DHTs, AnchorGrid inserts a verification layer before any peer connection is established.
 
-### The Handshake:
+```mermaid
+sequenceDiagram
+    participant User as 👤 User/Agent
+    participant Engine as 🛡️ Anchor Engine (Local)
+    participant Network as 🌐 AnchorGrid Network
+    participant Bouncer as 👮 Governance Node
 
-1. **Agent A** wants to talk to **Agent B**.
-2. **The Challenge:** Agent B sends a random nonce.
-3. **The Proof:** Agent A signs the nonce with its **Anchor Certificate** (issued after a successful audit).
-4. **The Verification:** Agent B verifies the signature + the audit timestamp.
-   - **If Valid:** Connection Open. 🔓
-   - **If Invalid:** Connection Dropped. 🔒
+    User->>Engine: 1. Request Audit (Scan Code)
+    Engine-->>User: 2. Issue Signed Certificate (Proof-of-Integrity)
+    
+    User->>Network: 3. "Hello! I want to join."
+    Network->>Bouncer: 4. Verify Certificate & Timestamp
+    
+    alt Certificate Valid
+        Bouncer-->>Network: ✅ Trust Score: 98/100
+        Network-->>User: 🔓 Access Granted (Mainnet)
+    else Certificate Invalid/Expired
+        Bouncer-->>Network: ❌ Policy Failure (OWASP LLM02)
+        Network-->>User: 🔒 Connection Dropped
+    end
+```
 
 ---
 
